@@ -1,11 +1,25 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 
-const Item = props => (
-    <View key={props.index} style={style.line}>
-        <Text style={style.lineText}>{props.elem}</Text>
-    </View>
-)
+import { capitalizeFirstLetter } from '../util'
+
+const Item = props => {
+    
+    const { elem } = props
+    const {title, first, last } = elem.name 
+
+    return(
+        <TouchableOpacity onPress={ () => console.log('clicou') }>
+            <View style={style.line}>
+                <Image style={style.avatar} source={{ uri: elem.picture.thumbnail }} />
+                <Text style={style.lineText}>
+                    { `${capitalizeFirstLetter(title)} ${first} ${last}` }
+                </Text>
+            </View>
+        </TouchableOpacity>
+    )
+
+}
 
 const style = StyleSheet.create({
     line: {
@@ -17,7 +31,15 @@ const style = StyleSheet.create({
     },
     lineText: {
         fontSize: 20,
-        paddingLeft: 15
+        paddingLeft: 15,
+        flex: 7
+    },
+    avatar: {
+        aspectRatio: 1,
+        flex: 1,
+        marginLeft: 15,
+        borderRadius: 50
+
     }
 })
 

@@ -17,29 +17,20 @@ export default class App extends React.Component {
 
   componentDidMount() {
     axios
-      .get('https://randomuser.me/api/?nat=br&results=5')
+      .get('https://randomuser.me/api/?nat=br&results=50')
       .then(response => {
           const { results } = response.data
-          const namesReq = results.map( people => people.name.first)
           this.setState({
               people: results
           })
       })
   }
 
-  getPeople(){
-     return this.state.people.map( obj => {
-          const people = {id: obj.login.uuid, name: obj.name.first}
-          console.log(people)
-          return people
-     })
-  }
-
   render() {
     return (
       <View>
-          <Header text="People"/>
-          <List elements={this.getPeople()} />
+          <Header title="Contatos"/>
+          <List elements={this.state.people} />
       </View>
     )
   }
