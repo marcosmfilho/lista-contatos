@@ -5,11 +5,11 @@ import { capitalizeFirstLetter } from '../util'
 
 const Item = props => {
     
-    const { elem } = props
+    const { elem, navigate } = props
     const {title, first, last } = elem.name 
 
     return(
-        <TouchableOpacity onPress={ () => console.log('clicou') }>
+        <TouchableOpacity onPress={ () => navigate('PeopleDatailPage', { elem }) }>
             <View style={style.line}>
                 <Image style={style.avatar} source={{ uri: elem.picture.thumbnail }} />
                 <Text style={style.lineText}>

@@ -1,20 +1,20 @@
 import React from 'react'
-import { Text, View, StyleSheet, ScrollView} from 'react-native'
+import { StyleSheet, FlatList} from 'react-native'
 
 import Item from './Item'
 
 const List = props => {
     
-    const list = props.elements.map(elem => 
-        <Item elem={elem} key={elem.login.id}/>
-    )
+    const { elements, onPressItem } = props
 
     return (
-        <ScrollView>
-            <View style={style.container}>
-                {list}
-            </View>
-        </ScrollView>
+        <FlatList style={style.container}
+            data={elements}
+            renderItem={ ({ item }) => {
+                <Item elem={item} key={item.login.uuid} navigate={onPressItem} />
+            }}
+            keyExtractor={item => {item.login.uuid}}
+        />
     )
 }
 
