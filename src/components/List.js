@@ -8,12 +8,13 @@ const List = props => {
     const { elements, onPressItem } = props
 
     return (
-        <FlatList style={style.container}
+        <FlatList 
+            style={style.container}
             data={elements}
-            renderItem={ ({ item }) => {
-                <Item elem={item} key={item.login.uuid} navigate={onPressItem} />
+            renderItem={({ item }) => {
+                return <Item elem={item} navigate={onPressItem} />
             }}
-            keyExtractor={item => {item.login.uuid}}
+            keyExtractor={(item, index) => index.toString()}
         />
     )
 }
