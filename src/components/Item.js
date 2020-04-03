@@ -32,7 +32,8 @@ const style = StyleSheet.create({
     lineText: {
         fontSize: 20,
         paddingLeft: 15,
-        flex: 7
+        flex: 7,
+        overflow: 'scroll'
     },
     avatar: {
         aspectRatio: 1,

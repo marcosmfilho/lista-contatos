@@ -5,7 +5,7 @@ import Item from './Item'
 
 const List = props => {
     
-    const { elements, onPressItem } = props
+    const { elements, onPressItem} = props
 
     return (
         <FlatList 
